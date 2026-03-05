@@ -1,26 +1,30 @@
 import {
   OlapTable,
   ClickHouseEngines,
-  Float32,
-  Int32,
-  Int64,
+  UInt8,
+  UInt32,
+  UInt64,
 } from "@514labs/moose-lib";
 
 interface AmazonReview {
-  asin: string;
-  parent_asin: string;
-  user_id: string;
-  rating: Float32;
-  title: string;
-  text: string;
-  sort_timestamp: Int64;
+  review_date: Date;
+  marketplace: string;
+  customer_id: UInt64;
+  review_id: string;
+  product_id: string;
+  product_parent: UInt64;
+  product_title: string;
+  product_category: string;
+  star_rating: UInt8;
+  helpful_votes: UInt32;
+  total_votes: UInt32;
+  vine: boolean;
   verified_purchase: boolean;
-  helpful_votes: Int32;
-  category: string; // Not in source data - populated during INSERT
+  review_headline: string;
+  review_body: string;
 }
 
 export const amazonReviewsTable = new OlapTable<AmazonReview>("AmazonReview", {
   engine: ClickHouseEngines.MergeTree,
-  orderByFields: ["parent_asin", "sort_timestamp"],
-  partitionBy: "toYYYYMM(fromUnixTimestamp64Milli(sort_timestamp))",
+  orderByFields: ["review_date", "product_category"],
 });
