@@ -26,5 +26,5 @@ interface AmazonReview {
 
 export const amazonReviewsTable = new OlapTable<AmazonReview>("AmazonReview", {
   engine: ClickHouseEngines.MergeTree,
-  orderByFields: ["review_date", "product_category"],
+  orderByFields: ["review_id", "customer_id"],
 });
