@@ -1,4 +1,4 @@
-import { Api, sql } from "@514labs/moose-lib";
+import { Api } from "@514labs/moose-lib";
 
 interface Params {
   category?: string;
@@ -10,9 +10,9 @@ interface Response {
   percentage: number;
 }
 
-export default new Api<Params, Response>(
+export const ratingDistribution = new Api<Params, Response>(
   "ratingDistribution",
-  async ({ category }, { client }) => {
+  async ({ category }, { client, sql }) => {
     const query = category
       ? sql`
         SELECT
@@ -34,6 +34,6 @@ export default new Api<Params, Response>(
         ORDER BY star_rating
       `;
     const result = await client.query.execute<Response>(query);
-    return result.toJSON();
+    return result.json();
   },
 );

@@ -1,4 +1,4 @@
-import { Api, sql } from "@514labs/moose-lib";
+import { Api } from "@514labs/moose-lib";
 
 interface Params {
   category?: string;
@@ -12,9 +12,9 @@ interface Response {
   avg_rating: number;
 }
 
-export default new Api<Params, Response>(
+export const topProducts = new Api<Params, Response>(
   "topProducts",
-  async ({ category, limit = 10 }, { client }) => {
+  async ({ category, limit = 10 }, { client, sql }) => {
     const query = category
       ? sql`
         SELECT
@@ -40,6 +40,6 @@ export default new Api<Params, Response>(
         LIMIT ${limit}
       `;
     const result = await client.query.execute<Response>(query);
-    return result.toJSON();
+    return result.json();
   },
 );

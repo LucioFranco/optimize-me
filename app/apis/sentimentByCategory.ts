@@ -1,4 +1,4 @@
-import { Api, sql } from "@514labs/moose-lib";
+import { Api } from "@514labs/moose-lib";
 
 interface Params {
   limit?: number;
@@ -11,9 +11,9 @@ interface Response {
   pct_positive: number;
 }
 
-export default new Api<Params, Response>(
+export const sentimentByCategory = new Api<Params, Response>(
   "sentimentByCategory",
-  async ({ limit = 20 }, { client }) => {
+  async ({ limit = 20 }, { client, sql }) => {
     const result = await client.query.execute<Response>(sql`
       SELECT
         product_category,
@@ -25,6 +25,6 @@ export default new Api<Params, Response>(
       ORDER BY pct_positive ASC
       LIMIT ${limit}
     `);
-    return result.toJSON();
+    return result.json();
   },
 );

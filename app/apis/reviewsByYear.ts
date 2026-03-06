@@ -1,4 +1,4 @@
-import { Api, sql } from "@514labs/moose-lib";
+import { Api } from "@514labs/moose-lib";
 
 interface Params {
   category?: string;
@@ -9,9 +9,9 @@ interface Response {
   reviews: number;
 }
 
-export default new Api<Params, Response>(
+export const reviewsByYear = new Api<Params, Response>(
   "reviewsByYear",
-  async ({ category }, { client }) => {
+  async ({ category }, { client, sql }) => {
     const query = category
       ? sql`
         SELECT
@@ -31,6 +31,6 @@ export default new Api<Params, Response>(
         ORDER BY year
       `;
     const result = await client.query.execute<Response>(query);
-    return result.toJSON();
+    return result.json();
   },
 );
