@@ -10,7 +10,7 @@ interface Response {
   percentage: number;
 }
 
-export const ratingDistribution = new Api<Params, Response>(
+export const ratingDistribution = new Api<Params, Response[]>(
   "ratingDistribution",
   async ({ category }, { client, sql }) => {
     const query = category

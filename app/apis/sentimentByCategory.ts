@@ -11,7 +11,7 @@ interface Response {
   pct_positive: number;
 }
 
-export const sentimentByCategory = new Api<Params, Response>(
+export const sentimentByCategory = new Api<Params, Response[]>(
   "sentimentByCategory",
   async ({ limit = 20 }, { client, sql }) => {
     const result = await client.query.execute<Response>(sql`

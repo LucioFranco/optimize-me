@@ -9,7 +9,7 @@ interface Response {
   reviews: number;
 }
 
-export const reviewsByYear = new Api<Params, Response>(
+export const reviewsByYear = new Api<Params, Response[]>(
   "reviewsByYear",
   async ({ category }, { client, sql }) => {
     const query = category

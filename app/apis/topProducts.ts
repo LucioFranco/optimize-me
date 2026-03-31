@@ -12,7 +12,7 @@ interface Response {
   avg_rating: number;
 }
 
-export const topProducts = new Api<Params, Response>(
+export const topProducts = new Api<Params, Response[]>(
   "topProducts",
   async ({ category, limit = 10 }, { client, sql }) => {
     const query = category

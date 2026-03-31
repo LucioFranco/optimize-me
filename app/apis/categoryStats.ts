@@ -10,7 +10,7 @@ interface Response {
   avg_rating: number;
 }
 
-export const categoryStats = new Api<Params, Response>(
+export const categoryStats = new Api<Params, Response[]>(
   "categoryStats",
   async ({ limit = 20 }, { client, sql }) => {
     const result = await client.query.execute<Response>(sql`
