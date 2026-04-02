@@ -7,7 +7,7 @@ import {
 } from "@514labs/moose-lib";
 
 interface AmazonReview {
-  review_date: Date;
+  review_date: Dat;
   marketplace: string;
   customer_id: UInt64;
   review_id: string;
