@@ -1,0 +1,317 @@
+{
+  "api_endpoints": {},
+  "consumption_api_web_server": {},
+  "default_database": "514-demos-optimize-me-5destruct-fda4e",
+  "dmv1_views": {},
+  "function_processes": {},
+  "materialized_views": {},
+  "orchestration_workers": {},
+  "select_row_policies": {},
+  "sql_resources": {},
+  "tables": {
+    "514-demos-optimize-me-5destruct-fda4e_AmazonProduct": {
+      "columns": [
+        {
+          "annotations": [],
+          "data_type": "String",
+          "default": null,
+          "name": "parent_asin",
+          "primary_key": false,
+          "required": true,
+          "unique": false
+        },
+        {
+          "annotations": [],
+          "data_type": "String",
+          "default": null,
+          "name": "main_category",
+          "primary_key": false,
+          "required": true,
+          "unique": false
+        },
+        {
+          "annotations": [],
+          "data_type": "String",
+          "default": null,
+          "name": "title",
+          "primary_key": false,
+          "required": true,
+          "unique": false
+        },
+        {
+          "annotations": [],
+          "data_type": "Float32",
+          "default": null,
+          "name": "average_rating",
+          "primary_key": false,
+          "required": true,
+          "unique": false
+        },
+        {
+          "annotations": [],
+          "data_type": "Int32",
+          "default": null,
+          "name": "rating_number",
+          "primary_key": false,
+          "required": true,
+          "unique": false
+        },
+        {
+          "annotations": [],
+          "data_type": {
+            "elementNullable": false,
+            "elementType": "String"
+          },
+          "default": null,
+          "name": "features",
+          "primary_key": false,
+          "required": true,
+          "unique": false
+        },
+        {
+          "annotations": [],
+          "data_type": {
+            "elementNullable": false,
+            "elementType": "String"
+          },
+          "default": null,
+          "name": "description",
+          "primary_key": false,
+          "required": true,
+          "unique": false
+        },
+        {
+          "annotations": [],
+          "data_type": "Float64",
+          "default": null,
+          "name": "price",
+          "primary_key": false,
+          "required": false,
+          "unique": false
+        },
+        {
+          "annotations": [],
+          "data_type": "String",
+          "default": null,
+          "name": "store",
+          "primary_key": false,
+          "required": true,
+          "unique": false
+        },
+        {
+          "annotations": [],
+          "data_type": {
+            "elementNullable": false,
+            "elementType": "String"
+          },
+          "default": null,
+          "name": "categories",
+          "primary_key": false,
+          "required": true,
+          "unique": false
+        },
+        {
+          "annotations": [],
+          "data_type": {
+            "elementNullable": false,
+            "elementType": "String"
+          },
+          "default": null,
+          "name": "bought_together",
+          "primary_key": false,
+          "required": true,
+          "unique": false
+        }
+      ],
+      "database": "514-demos-optimize-me-5destruct-fda4e",
+      "engine": "MergeTree",
+      "engine_params_hash": "d5aa53dbc771b396681e589a76e142d602f44981211d28085e2af418e519fe8a",
+      "indexes": [],
+      "life_cycle": "EXTERNALLY_MANAGED",
+      "metadata": null,
+      "name": "AmazonProduct",
+      "order_by": [
+        "main_category",
+        "parent_asin"
+      ],
+      "projections": [],
+      "source_primitive": {
+        "name": "AmazonProduct",
+        "primitive_type": "DataModel"
+      },
+      "table_settings": {
+        "enable_mixed_granularity_parts": "1",
+        "index_granularity": "8192",
+        "index_granularity_bytes": "10485760"
+      },
+      "version": null
+    },
+    "514-demos-optimize-me-5destruct-fda4e_AmazonReview": {
+      "columns": [
+        {
+          "annotations": [],
+          "data_type": "DateTime",
+          "default": null,
+          "name": "review_date",
+          "primary_key": false,
+          "required": true,
+          "unique": false
+        },
+        {
+          "annotations": [],
+          "data_type": "String",
+          "default": null,
+          "name": "marketplace",
+          "primary_key": false,
+          "required": true,
+          "unique": false
+        },
+        {
+          "annotations": [],
+          "data_type": "UInt64",
+          "default": null,
+          "name": "customer_id",
+          "primary_key": false,
+          "required": true,
+          "unique": false
+        },
+        {
+          "annotations": [],
+          "data_type": "String",
+          "default": null,
+          "name": "review_id",
+          "primary_key": false,
+          "required": true,
+          "unique": false
+        },
+        {
+          "annotations": [],
+          "data_type": "String",
+          "default": null,
+          "name": "product_id",
+          "primary_key": false,
+          "required": true,
+          "unique": false
+        },
+        {
+          "annotations": [],
+          "data_type": "UInt64",
+          "default": null,
+          "name": "product_parent",
+          "primary_key": false,
+          "required": true,
+          "unique": false
+        },
+        {
+          "annotations": [],
+          "data_type": "String",
+          "default": null,
+          "name": "product_title",
+          "primary_key": false,
+          "required": true,
+          "unique": false
+        },
+        {
+          "annotations": [],
+          "data_type": "String",
+          "default": null,
+          "name": "product_category",
+          "primary_key": false,
+          "required": true,
+          "unique": false
+        },
+        {
+          "annotations": [],
+          "data_type": "UInt8",
+          "default": null,
+          "name": "star_rating",
+          "primary_key": false,
+          "required": true,
+          "unique": false
+        },
+        {
+          "annotations": [],
+          "data_type": "UInt32",
+          "default": null,
+          "name": "helpful_votes",
+          "primary_key": false,
+          "required": true,
+          "unique": false
+        },
+        {
+          "annotations": [],
+          "data_type": "UInt32",
+          "default": null,
+          "name": "total_votes",
+          "primary_key": false,
+          "required": true,
+          "unique": false
+        },
+        {
+          "annotations": [],
+          "data_type": "Boolean",
+          "default": null,
+          "name": "vine",
+          "primary_key": false,
+          "required": true,
+          "unique": false
+        },
+        {
+          "annotations": [],
+          "data_type": "Boolean",
+          "default": null,
+          "name": "verified_purchase",
+          "primary_key": false,
+          "required": true,
+          "unique": false
+        },
+        {
+          "annotations": [],
+          "data_type": "String",
+          "default": null,
+          "name": "review_headline",
+          "primary_key": false,
+          "required": true,
+          "unique": false
+        },
+        {
+          "annotations": [],
+          "data_type": "String",
+          "default": null,
+          "name": "review_body",
+          "primary_key": false,
+          "required": true,
+          "unique": false
+        }
+      ],
+      "database": "514-demos-optimize-me-5destruct-fda4e",
+      "engine": "MergeTree",
+      "engine_params_hash": "d5aa53dbc771b396681e589a76e142d602f44981211d28085e2af418e519fe8a",
+      "indexes": [],
+      "life_cycle": "EXTERNALLY_MANAGED",
+      "metadata": null,
+      "name": "AmazonReview",
+      "order_by": [
+        "product_category",
+        "review_date"
+      ],
+      "projections": [],
+      "source_primitive": {
+        "name": "AmazonReview",
+        "primitive_type": "DataModel"
+      },
+      "table_settings": {
+        "enable_mixed_granularity_parts": "1",
+        "index_granularity": "8192",
+        "index_granularity_bytes": "10485760"
+      },
+      "version": null
+    }
+  },
+  "topic_to_table_sync_processes": {},
+  "topic_to_topic_sync_processes": {},
+  "topics": {},
+  "views": {},
+  "web_apps": {},
+  "workflows": {}
+}

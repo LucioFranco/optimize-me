@@ -1,0 +1,139 @@
+# yaml-language-server: $schema=../.moose/migration_schema.json
+
+created_at: 2026-04-02T22:19:46.435956Z
+operations:
+- DropTable:
+    cluster_name: null
+    database: 514-demos-optimize-me-5destruct-fda4e
+    table: AmazonReview
+- CreateTable:
+    table:
+      columns:
+      - annotations: []
+        data_type: DateTime
+        default: null
+        name: review_date
+        primary_key: false
+        required: true
+        unique: false
+      - annotations: []
+        data_type: String
+        default: null
+        name: marketplace
+        primary_key: false
+        required: true
+        unique: false
+      - annotations: []
+        data_type: UInt64
+        default: null
+        name: customer_id
+        primary_key: false
+        required: true
+        unique: false
+      - annotations: []
+        data_type: String
+        default: null
+        name: review_id
+        primary_key: false
+        required: true
+        unique: false
+      - annotations: []
+        data_type: String
+        default: null
+        name: product_id
+        primary_key: false
+        required: true
+        unique: false
+      - annotations: []
+        data_type: UInt64
+        default: null
+        name: product_parent
+        primary_key: false
+        required: true
+        unique: false
+      - annotations: []
+        data_type: String
+        default: null
+        name: product_title
+        primary_key: false
+        required: true
+        unique: false
+      - annotations: []
+        data_type: String
+        default: null
+        name: product_category
+        primary_key: false
+        required: true
+        unique: false
+      - annotations: []
+        data_type: UInt8
+        default: null
+        name: star_rating
+        primary_key: false
+        required: true
+        unique: false
+      - annotations: []
+        data_type: UInt32
+        default: null
+        name: helpful_votes
+        primary_key: false
+        required: true
+        unique: false
+      - annotations: []
+        data_type: UInt32
+        default: null
+        name: total_votes
+        primary_key: false
+        required: true
+        unique: false
+      - annotations: []
+        data_type: Boolean
+        default: null
+        name: vine
+        primary_key: false
+        required: true
+        unique: false
+      - annotations: []
+        data_type: Boolean
+        default: null
+        name: verified_purchase
+        primary_key: false
+        required: true
+        unique: false
+      - annotations: []
+        data_type: String
+        default: null
+        name: review_headline
+        primary_key: false
+        required: true
+        unique: false
+      - annotations: []
+        data_type: String
+        default: null
+        name: review_body
+        primary_key: false
+        required: true
+        unique: false
+      engine: MergeTree
+      engine_params_hash: d5aa53dbc771b396681e589a76e142d602f44981211d28085e2af418e519fe8a
+      indexes: []
+      life_cycle: FULLY_MANAGED
+      metadata:
+        description: null
+        source:
+          file: dist/app/ingest/amazonReviews.js
+      name: AmazonReview
+      order_by:
+      - review_id
+      - product_category
+      - review_date
+      projections: []
+      source_primitive:
+        name: AmazonReview
+        primitive_type: DataModel
+      table_settings:
+        enable_mixed_granularity_parts: '1'
+        index_granularity: '8192'
+        index_granularity_bytes: '10485760'
+      table_settings_hash: 2a829df7aa4f8fc1b104ebeb310a3620e36ee055842b09814808045285ec62ee
+      version: null
