@@ -5,3 +5,4 @@ export { reviewsByYear } from "./apis/reviewsByYear";
 export { ratingDistribution } from "./apis/ratingDistribution";
 export { topProducts } from "./apis/topProducts";
 export { sentimentByCategory } from "./apis/sentimentByCategory";
+export { categoryStatsModel } from "./queries/categoryStatsModel";
