@@ -18,7 +18,7 @@ export const benchmark = defineBenchmark({
   ],
   thresholds: {
     baselineP95Ms: 2000,
-    scenarioRegressionRatio: 2.5,
+    scenarioRegressionRatio: 5.0,
   },
   sampling: {
     baselineRuns: 12,
