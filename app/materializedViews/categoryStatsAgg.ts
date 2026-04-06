@@ -12,7 +12,7 @@ interface CategoryStatsAgg {
 }
 
 export const categoryStatsAggTable = new OlapTable<CategoryStatsAgg>(
-  "CategoryStatsAgg2",
+  "CategoryStatsAgg",
   {
     orderByFields: ["productCategory"],
     engine: ClickHouseEngines.MergeTree,
@@ -20,7 +20,7 @@ export const categoryStatsAggTable = new OlapTable<CategoryStatsAgg>(
 );
 
 export const categoryStatsAggMV = new MaterializedView<CategoryStatsAgg>({
-  materializedViewName: "CategoryStatsAggMV2",
+  materializedViewName: "CategoryStatsAggMV",
   targetTable: categoryStatsAggTable,
   selectStatement: `
     SELECT
