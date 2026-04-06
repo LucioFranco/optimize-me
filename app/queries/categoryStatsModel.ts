@@ -8,7 +8,7 @@ export const categoryStatsModel = defineQueryModel({
     productCategory: { column: "productCategory" },
   },
   metrics: {
-    reviews: { agg: sql`sum(reviews)`, as: "reviews" },
+    totalReviews: { agg: sql`sum(reviews)`, as: "total_reviews" },
     avgRating: { agg: sql`sum(totalRating) / sum(reviews)`, as: "avg_rating" },
   },
   filters: {
@@ -17,9 +17,9 @@ export const categoryStatsModel = defineQueryModel({
       operators: ["eq", "in"] as const,
     },
   },
-  sortable: ["reviews", "avg_rating"] as const,
+  sortable: ["total_reviews", "avg_rating"] as const,
   defaults: {
-    orderBy: [["reviews", "DESC"]],
+    orderBy: [["total_reviews", "DESC"]],
     limit: 20,
   },
 });
