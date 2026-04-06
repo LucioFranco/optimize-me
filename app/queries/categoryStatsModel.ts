@@ -1,19 +1,19 @@
-import { defineQueryModel, count, avg } from "@514labs/moose-lib";
-import { amazonReviewsTable } from "../ingest/amazonReviews";
+import { defineQueryModel, sql } from "@514labs/moose-lib";
+import { categoryStatsAggTable } from "../materializedViews/categoryStatsAgg";
 
 export const categoryStatsModel = defineQueryModel({
   name: "category_stats_benchmark",
-  table: amazonReviewsTable,
+  table: categoryStatsAggTable,
   dimensions: {
-    productCategory: { column: "product_category" },
+    productCategory: { column: "productCategory" },
   },
   metrics: {
-    reviews: { agg: count(), as: "reviews" },
-    avgRating: { agg: avg(amazonReviewsTable.columns.star_rating), as: "avg_rating" },
+    reviews: { agg: sql`countMerge(reviews)`, as: "reviews" },
+    avgRating: { agg: sql`avgMerge(avgRating)`, as: "avg_rating" },
   },
   filters: {
     productCategory: {
-      column: "product_category",
+      column: "productCategory",
       operators: ["eq", "in"] as const,
     },
   },
