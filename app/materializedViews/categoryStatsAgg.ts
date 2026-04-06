@@ -2,13 +2,15 @@ import {
   OlapTable,
   ClickHouseEngines,
   MaterializedView,
+  Aggregated,
 } from "@514labs/moose-lib";
 import { amazonReviewsTable } from "../ingest/amazonReviews";
+import { UInt8 } from "@514labs/moose-lib";
 
 interface CategoryStatsAgg {
   productCategory: string;
-  reviews: number;
-  avgRating: number;
+  reviews: number & Aggregated<"count">;
+  avgRating: number & Aggregated<"avg", [UInt8]>;
 }
 
 export const categoryStatsAggTable = new OlapTable<CategoryStatsAgg>(
