@@ -2,33 +2,31 @@ import {
   OlapTable,
   ClickHouseEngines,
   MaterializedView,
-  Aggregated,
 } from "@514labs/moose-lib";
 import { amazonReviewsTable } from "../ingest/amazonReviews";
-import { UInt8 } from "@514labs/moose-lib";
 
 interface CategoryStatsAgg {
   productCategory: string;
-  reviews: number & Aggregated<"count">;
-  avgRating: number & Aggregated<"avg", [UInt8]>;
+  reviews: number;
+  totalRating: number;
 }
 
 export const categoryStatsAggTable = new OlapTable<CategoryStatsAgg>(
-  "CategoryStatsAgg",
+  "CategoryStatsAgg2",
   {
     orderByFields: ["productCategory"],
-    engine: ClickHouseEngines.AggregatingMergeTree,
+    engine: ClickHouseEngines.MergeTree,
   },
 );
 
 export const categoryStatsAggMV = new MaterializedView<CategoryStatsAgg>({
-  materializedViewName: "CategoryStatsAggMV",
+  materializedViewName: "CategoryStatsAggMV2",
   targetTable: categoryStatsAggTable,
   selectStatement: `
     SELECT
       product_category AS productCategory,
-      countState() AS reviews,
-      avgState(star_rating) AS avgRating
+      count() AS reviews,
+      sum(star_rating) AS totalRating
     FROM AmazonReview
     GROUP BY product_category
   `,

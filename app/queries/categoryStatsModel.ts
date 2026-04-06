@@ -8,8 +8,8 @@ export const categoryStatsModel = defineQueryModel({
     productCategory: { column: "productCategory" },
   },
   metrics: {
-    reviews: { agg: sql`countMerge(reviews)`, as: "reviews" },
-    avgRating: { agg: sql`avgMerge(avgRating)`, as: "avg_rating" },
+    reviews: { agg: sql`sum(reviews)`, as: "reviews" },
+    avgRating: { agg: sql`sum(totalRating) / sum(reviews)`, as: "avg_rating" },
   },
   filters: {
     productCategory: {
