@@ -6,3 +6,4 @@ export { ratingDistribution } from "./apis/ratingDistribution";
 export { topProducts } from "./apis/topProducts";
 export { sentimentByCategory } from "./apis/sentimentByCategory";
 export { categoryStatsModel } from "./queries/categoryStatsModel";
+export { categoryStatsTargetTable, categoryStatsMV } from "./views/categoryStatsMV";
