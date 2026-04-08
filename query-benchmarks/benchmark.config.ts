@@ -1,6 +1,6 @@
 import { buildQuery } from "@514labs/moose-lib";
 import { defineBenchmark } from "./benchmark/core";
-import { categoryStatsModel } from "../dist/app/index.js";
+import { categoryStatsModel } from "../dist/index.js";
 
 const ALL_DIMENSIONS = Object.keys(categoryStatsModel.dimensions ?? {}) as string[];
 const ALL_METRICS = Object.keys(categoryStatsModel.metrics ?? {}) as string[];
